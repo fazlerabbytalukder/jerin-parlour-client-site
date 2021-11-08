@@ -23,7 +23,7 @@ const Testimonial = (props) => {
                         component="img"
                         style={{ width: '50px' }}
                         image={img}
-                        alt="Paella dish"
+                        alt="your img"
                     />
                     <Box sx={{ml:2}}>
                         <Typography variant="body2" sx={{fontSize: 17, color: '#F63E7B',fontWeight: 500}} >
