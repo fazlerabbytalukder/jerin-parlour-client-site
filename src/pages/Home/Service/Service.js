@@ -7,7 +7,7 @@ const Service = (props) => {
     const history = useHistory();
 
     const handleServiceClick = () => {
-        history.push(`/services/${_id}`);
+        history.push(`/dashboard/${_id}`);
     }
     return (
         <Grid item xs={4} sm={4} md={4}>

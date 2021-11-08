@@ -5,7 +5,7 @@ import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import Login from './pages/Login/Login/Login';
 import Register from './pages/Login/Register/Register';
 import PrivateRoute from './pages/Login/Login/PrivateRoute/PrivateRoute';
-import Booking from './pages/Home/Booking/Booking';
+import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -19,8 +19,8 @@ function App() {
             <Route path='/home'>
               <Home></Home>
             </Route>
-            <PrivateRoute path='/services/:serviceId'>
-              <Booking></Booking>
+            <PrivateRoute path='/dashboard/:serviceId'>
+              <Dashboard></Dashboard>
             </PrivateRoute>
             <Route path='/login'>
               <Login></Login>
