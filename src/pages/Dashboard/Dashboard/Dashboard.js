@@ -30,6 +30,7 @@ import MyServices from '../MyServices/MyServices';
 import Review from '../Review/Review';
 import useAuth from '../../../Hooks/useAuth';
 import AdminRoute from '../../Login/AdminRote/AdminRoute';
+import OrderList from '../OrderList/OrderList';
 
 const drawerWidth = 200;
 
@@ -67,6 +68,7 @@ function Dashboard(props) {
             <Link to={`${url}/myServices`}><Button color="inherit">My Services</Button></Link>
             <Link to={`${url}/review`}><Button color="inherit">Add Review</Button></Link>
             {admin && <Box>
+                <Link to={`${url}/orderList`}><Button color="inherit">Order List</Button></Link>
                 <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
                 <Link to={`${url}/addService`}><Button color="inherit">Add Service</Button></Link>
             </Box>}
@@ -169,6 +171,9 @@ function Dashboard(props) {
                     </AdminRoute>
                     <AdminRoute path={`${path}/addService`}>
                         <AddService></AddService>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/orderList`}>
+                        <OrderList></OrderList>
                     </AdminRoute>
                     <Route path={`${path}/myServices`}>
                         <MyServices></MyServices>
