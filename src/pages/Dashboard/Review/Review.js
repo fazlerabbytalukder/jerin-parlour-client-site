@@ -1,4 +1,4 @@
-import { Button, TextField, Typography } from '@mui/material';
+import { Alert, Button, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 import useAuth from '../../../Hooks/useAuth';
 
@@ -10,6 +10,7 @@ const buttonDesign2 = {
 
 const Review = () => {
     const [review, setReview] = useState({})
+    const [success, setSuccess] = useState(false);
     const { user } = useAuth();
     console.log(user);
 
@@ -41,7 +42,9 @@ const Review = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                if (data.insertedId) {
+                    setSuccess(true);
+                }
             })
         
         e.preventDefault();
@@ -70,7 +73,8 @@ const Review = () => {
                     onBlur={handleOnBlur}
                     defaultValue="Description"
                     sx={{ width: "50%", backgroundColor: "white", mb: 1 }} />
-                {/* {bookingSuccess && <Alert style={{width:'50%', margin:"5px 0"}} severity="success">Booking Successfull</Alert>} */}
+                
+                {success && <Alert severity="success">Service Added Successfully</Alert>}
                 <Button type="submit" style={{width:'50%',...buttonDesign2, color:'white'}}>Submit</Button>
             </form>
         </>
