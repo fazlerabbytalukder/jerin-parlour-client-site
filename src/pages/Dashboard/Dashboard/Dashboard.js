@@ -6,12 +6,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -31,6 +25,12 @@ import Review from '../Review/Review';
 import useAuth from '../../../Hooks/useAuth';
 import AdminRoute from '../../Login/AdminRote/AdminRoute';
 import OrderList from '../OrderList/OrderList';
+
+const buttonDesign = {
+    color: '#F63E7B',
+    padding: '5px 10px',
+    textDecoration:'none'
+}
 
 const drawerWidth = 200;
 
@@ -64,35 +64,14 @@ function Dashboard(props) {
         <div>
             <Toolbar />
             <Divider />
-            <Link to='/home'><Button color="inherit">Go to Home</Button></Link>
-            <Link to={`${url}/myServices`}><Button color="inherit">My Services</Button></Link>
-            <Link to={`${url}/review`}><Button color="inherit">Add Review</Button></Link>
+            <Link style={buttonDesign} to='/home'><Button color="inherit">Go to Home</Button></Link>
+            <Link style={buttonDesign} to={`${url}/myServices`}><Button color="inherit">My Services</Button></Link>
+            <Link style={buttonDesign} to={`${url}/review`}><Button color="inherit">Add Review</Button></Link>
             {admin && <Box>
-                <Link to={`${url}/orderList`}><Button color="inherit">Order List</Button></Link>
-                <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
-                <Link to={`${url}/addService`}><Button color="inherit">Add Service</Button></Link>
+                <Link style={buttonDesign} to={`${url}/orderList`}><Button color="inherit">Order List</Button></Link>
+                <Link style={buttonDesign} to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
+                <Link style={buttonDesign} to={`${url}/addService`}><Button color="inherit">Add Service</Button></Link>
             </Box>}
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
         </div>
     );
 
@@ -102,6 +81,7 @@ function Dashboard(props) {
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar
+                style={{ background: 'transparent' }}
                 position="fixed"
                 sx={{
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
@@ -118,8 +98,8 @@ function Dashboard(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        Responsive drawer
+                    <Typography style={{color: '#F63E7B'}} variant="h6" noWrap component="div">
+                        Dashboard
                     </Typography>
                 </Toolbar>
             </AppBar>
