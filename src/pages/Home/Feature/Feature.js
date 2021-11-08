@@ -1,5 +1,5 @@
 import { Button, Container, Grid, Typography } from '@mui/material';
-import { Box, padding } from '@mui/system';
+import { Box } from '@mui/system';
 import React from 'react';
 import featureImg from '../../../Image_Icon/Image/engin-akyurt-g-m8EDc4X6Q-unsplash 1.png';
 
@@ -32,7 +32,7 @@ const Feature = () => {
                     <Typography variant='h4' sx={{textAlign:'left', fontWeight: 400}}>
                     Let us handle your<br /> screen <span style={{color: '#F63E7B'}}>Professionally.</span>
                     </Typography>
-                    <Typography variant='h6' sx={{ my: 1, fontSize: 15, color: 'gray', fontWeight: 300,textAlign:'left' }}>
+                    <Typography variant='h6' sx={{ my: 1, fontSize: 15, color: 'gray', fontWeight: 300,textAlign:'left', marginRight:'150px' }}>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil omnis corrupti est velit cupiditate officia impedit autem soluta quam tempore?Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                         </Typography>
                         <Button  variant="contained" style={{ backgroundColor: '#F63E7B',...verticalleft }}>Get Our Services</Button>
