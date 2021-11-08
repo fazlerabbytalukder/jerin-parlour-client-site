@@ -28,12 +28,16 @@ import { useParams } from 'react-router';
 import Booking from '../../Home/Booking/Booking';
 import MyServices from '../MyServices/MyServices';
 import Review from '../Review/Review';
+import useAuth from '../../../Hooks/useAuth';
+import AdminRoute from '../../Login/AdminRote/AdminRoute';
 
 const drawerWidth = 200;
 
 function Dashboard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
+
+    
 
 
     //for props drilling using this for share service both dashboard and services
@@ -48,6 +52,9 @@ function Dashboard(props) {
 
     let { path, url } = useRouteMatch();
 
+    //admin non admin
+    const { admin } = useAuth();
+
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
@@ -59,8 +66,10 @@ function Dashboard(props) {
             <Link to='/home'><Button color="inherit">Go to Home</Button></Link>
             <Link to={`${url}/myServices`}><Button color="inherit">My Services</Button></Link>
             <Link to={`${url}/review`}><Button color="inherit">Add Review</Button></Link>
-            <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
-            <Link to={`${url}/addService`}><Button color="inherit">Add Service</Button></Link>
+            {admin && <Box>
+                <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
+                <Link to={`${url}/addService`}><Button color="inherit">Add Service</Button></Link>
+            </Box>}
             <List>
                 {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                     <ListItem button key={text}>
@@ -155,12 +164,12 @@ function Dashboard(props) {
                             service={service}
                         ></Booking>
                     </Route>
-                    <Route path={`${path}/makeAdmin`}>
+                    <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
-                    </Route>
-                    <Route path={`${path}/addService`}>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/addService`}>
                         <AddService></AddService>
-                    </Route>
+                    </AdminRoute>
                     <Route path={`${path}/myServices`}>
                         <MyServices></MyServices>
                     </Route>
