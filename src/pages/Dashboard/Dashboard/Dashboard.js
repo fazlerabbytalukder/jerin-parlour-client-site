@@ -26,6 +26,7 @@ import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AddService from '../AddService/AddService';
 import { useParams } from 'react-router';
 import Booking from '../../Home/Booking/Booking';
+import MyServices from '../MyServices/MyServices';
 
 const drawerWidth = 200;
 
@@ -54,7 +55,8 @@ function Dashboard(props) {
         <div>
             <Toolbar />
             <Divider />
-            <Link to='/home'><Button color="inherit">Home</Button></Link>
+            <Link to='/home'><Button color="inherit">Go to Home</Button></Link>
+            <Link to={`${url}/myServices`}><Button color="inherit">My Services</Button></Link>
             <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
             <Link to={`${url}/addService`}><Button color="inherit">Add Service</Button></Link>
             <List>
@@ -156,6 +158,9 @@ function Dashboard(props) {
                     </Route>
                     <Route path={`${path}/addService`}>
                         <AddService></AddService>
+                    </Route>
+                    <Route path={`${path}/myServices`}>
+                        <MyServices></MyServices>
                     </Route>
                 </Switch>
             </Box>

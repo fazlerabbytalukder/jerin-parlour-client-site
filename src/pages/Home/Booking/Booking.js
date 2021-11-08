@@ -29,7 +29,9 @@ const Booking = ({ service }) => {
     const handleBookingSubmit = e => {
         const booking = {
             ...bookingInfo,
-            serviceName:service.servicename
+            serviceName: service.servicename,
+            img: service.img,
+            description:service.details
         }
         // console.log(booking);
 
