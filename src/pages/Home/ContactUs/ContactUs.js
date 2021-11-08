@@ -18,8 +18,8 @@ const buttonDesign = {
 
 const ContactUs = () => {
     return (
-        <Container style={contactBackground}>
-            <Box>
+        <Box style={contactBackground}>
+            <Container>
                 <Box sx={{ my: 5 }}>
                     <Typography variant='h6' sx={{ fontSize: 15, color: '#F63E7B', fontWeight: 500 }}>
                         CONTACT US
@@ -57,7 +57,7 @@ const ContactUs = () => {
                     />
                     <br />
                     <TextField
-                        style={{ margin: '5px', width: '45%', backgroundColor: 'white', border: 'none' }}
+                        style={{ margin: '5px', width: '38%', backgroundColor: 'white', border: 'none' }}
                         id="outlined-multiline-static"
                         multiline
                         rows={4}
@@ -67,8 +67,8 @@ const ContactUs = () => {
                     <Button style={{ ...buttonDesign, marginTop: '10px' }} type="submit" variant="contained">Submit</Button>
                 </form>
 
-            </Box>
-        </Container>
+            </Container>
+        </Box>
     );
 };
 
