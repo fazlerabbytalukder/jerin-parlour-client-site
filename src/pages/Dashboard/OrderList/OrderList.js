@@ -5,7 +5,7 @@ const OrderList = () => {
     const [bookingData, setBookingData] = useState([])
     const [approveId, setApproveId] = useState('');
     useEffect(() => {
-        fetch('http://localhost:5000/booking')
+        fetch('https://warm-caverns-33729.herokuapp.com/booking')
             .then(res => res.json())
             .then(data => setBookingData(data));
     }, [approveId])
@@ -14,7 +14,7 @@ const OrderList = () => {
     //update data pending to approved
     const handleUpdate = (id) => {
         setApproveId(id);
-        const url = `http://localhost:5000/booking/${id}`;
+        const url = `https://warm-caverns-33729.herokuapp.com/booking/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -36,7 +36,7 @@ const OrderList = () => {
         setApproveId(id);
         const proceed = window.confirm('Are you sure, you want to delete?');
         if (proceed) {
-            const url = `http://localhost:5000/booking/${id}`;
+            const url = `https://warm-caverns-33729.herokuapp.com/booking/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

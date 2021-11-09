@@ -8,7 +8,7 @@ const MyServices = () => {
     const [myService, setMyService] = useState([]);
 
     useEffect(() => {
-        const url = `http://localhost:5000/booking?email=${user.email}`;
+        const url = `https://warm-caverns-33729.herokuapp.com/booking?email=${user.email}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setMyService(data));

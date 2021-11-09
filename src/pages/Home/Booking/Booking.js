@@ -20,7 +20,7 @@ const Booking = () => {
     const [service, setService] =useState([]);
     const { serviceId } = useParams();
     useEffect(() => {
-        fetch(`http://localhost:5000/services/${serviceId}`)
+        fetch(`https://warm-caverns-33729.herokuapp.com/services/${serviceId}`)
             .then(res => res.json())
             .then(data => setService(data));
     }, [serviceId])
@@ -46,7 +46,7 @@ const Booking = () => {
         // console.log(booking);
 
         //send data to the serer
-        fetch('http://localhost:5000/booking', {
+        fetch('https://warm-caverns-33729.herokuapp.com/booking', {
             method: 'POST',
             headers: {
                 'content-type':'application/json'
