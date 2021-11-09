@@ -22,7 +22,7 @@ function App() {
             <PrivateRoute exact path='/dashboard'>
               <Dashboard></Dashboard>
             </PrivateRoute>
-            <PrivateRoute exact path='/dashboard/:serviceId'>
+            <PrivateRoute path='/dashboard/:serviceId'>
               <Dashboard></Dashboard>
             </PrivateRoute>
             <Route path='/login'>
