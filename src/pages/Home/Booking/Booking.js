@@ -1,5 +1,6 @@
 import { Alert, Button, TextField, Typography } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import useAuth from '../../../Hooks/useAuth';
 
 const buttonDesign2 = {
@@ -9,12 +10,20 @@ const buttonDesign2 = {
 }
 
 
-const Booking = ({ service }) => {
+const Booking = () => {
     const { user } = useAuth();
     const [bookingSuccess, setBookingSuccess] = useState(false);
 
     const initialInfo = {yourName:user.displayName, email:user.email}
     const [bookingInfo, setBookingInfo] = useState(initialInfo)
+
+    const [service, setService] =useState([]);
+    const { serviceId } = useParams();
+    useEffect(() => {
+        fetch(`http://localhost:5000/services/${serviceId}`)
+            .then(res => res.json())
+            .then(data => setService(data));
+    }, [serviceId])
 
     const handleOnBlur = e => {
         const field = e.target.name;

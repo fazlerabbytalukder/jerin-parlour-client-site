@@ -42,13 +42,6 @@ function Dashboard(props) {
 
 
     //for props drilling using this for share service both dashboard and services
-    const [service, setService] = React.useState([]);
-    const { serviceId } = useParams();
-    React.useEffect(() => {
-        fetch(`http://localhost:5000/services/${serviceId}`)
-            .then(res => res.json())
-            .then(data => setService(data));
-    }, [])
     //
 
     let { path, url } = useRouteMatch();
@@ -143,7 +136,7 @@ function Dashboard(props) {
                 <Switch>
                     <Route exact path={path}>
                         <Booking
-                            service={service}
+                            // service={service}
                         ></Booking>
                     </Route>
                     <AdminRoute path={`${path}/makeAdmin`}>
