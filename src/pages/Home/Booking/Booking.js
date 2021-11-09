@@ -31,7 +31,8 @@ const Booking = ({ service }) => {
             ...bookingInfo,
             serviceName: service.servicename,
             img: service.img,
-            description:service.details
+            description: service.details,
+            status:'pending'
         }
         // console.log(booking);
 
