@@ -3,15 +3,17 @@ import React, { useEffect, useState } from 'react';
 
 const OrderList = () => {
     const [bookingData, setBookingData] = useState([])
+    const [approveId, setApproveId] = useState('');
     useEffect(() => {
         fetch('http://localhost:5000/booking')
             .then(res => res.json())
             .then(data => setBookingData(data));
-    }, [])
+    }, [approveId])
     
 
     //update data pending to approved
     const handleUpdate = (id) => {
+        setApproveId(id);
         const url = `http://localhost:5000/booking/${id}`;
         fetch(url, {
             method: 'PUT',
@@ -24,13 +26,14 @@ const OrderList = () => {
             .then(data => {
                 if (data.modifiedCount > 0) {
                     alert('updated successfull');
-                    window.location.reload();
+                    
             }
         })
     }
 
     //handle delete
     const handleDelete = (id) => {
+        setApproveId(id);
         const proceed = window.confirm('Are you sure, you want to delete?');
         if (proceed) {
             const url = `http://localhost:5000/booking/${id}`;
@@ -44,7 +47,6 @@ const OrderList = () => {
                         const remainingOrder = bookingData.filter(user => user._id !== id);
                         setBookingData(remainingOrder);
                         // window.reload();
-                        window.location.reload();
                     }
                 });
         }
