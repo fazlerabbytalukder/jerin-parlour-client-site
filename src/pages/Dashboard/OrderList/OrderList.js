@@ -29,6 +29,27 @@ const OrderList = () => {
         })
     }
 
+    //handle delete
+    const handleDelete = (id) => {
+        const proceed = window.confirm('Are you sure, you want to delete?');
+        if (proceed) {
+            const url = `http://localhost:5000/booking/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('deleted successfully');
+                        const remainingOrder = bookingData.filter(user => user._id !== id);
+                        setBookingData(remainingOrder);
+                        // window.reload();
+                        window.location.reload();
+                    }
+                });
+        }
+    }
+
     return (
         <div>
             <h2>Order List</h2>
@@ -56,7 +77,7 @@ const OrderList = () => {
                                 <TableCell align="center">{row.serviceName}</TableCell>
                                 <TableCell align="center">{row.status}</TableCell>
                                 <TableCell align="center"><Button onClick={() => handleUpdate(row._id)} variant='contained'>approve</Button></TableCell>
-                                <TableCell align="center"><Button variant='contained'>Delete</Button></TableCell>
+                                <TableCell align="center"><Button onClick={() => handleDelete(row._id)} variant='contained'>Delete</Button></TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
